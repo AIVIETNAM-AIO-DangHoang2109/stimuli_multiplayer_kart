@@ -1,0 +1,12 @@
+{
+    "frameRate": 15,
+    "width": 640,
+    "height": 360,
+    "frameCount": 185,
+    "durationSeconds": 16.15,
+    "audioSampleRate": 44100,
+    "audioChannels": 2,
+    "imageFormat": "JPG",
+    "platform": "OSXEditor",
+    "createdAt": "2026-07-18T20:49:46+07:00"
+}
