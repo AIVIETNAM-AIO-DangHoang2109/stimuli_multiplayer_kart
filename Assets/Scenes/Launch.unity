@@ -39316,6 +39316,10 @@ PrefabInstance:
       propertyPath: settings.EnableDebugLogs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
+      propertyPath: settings.MaxConcurrentEncoders
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

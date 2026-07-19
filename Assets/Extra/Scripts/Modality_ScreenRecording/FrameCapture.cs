@@ -15,7 +15,6 @@ namespace Extra.ScreenRecording
         private readonly float _captureInterval;
 
         private RenderTexture _captureRT;
-        private Camera _forcedCamera;
         private Coroutine _captureCoroutine;
         private Texture2D _fallbackTex;
 
@@ -44,8 +43,6 @@ namespace Extra.ScreenRecording
 
         public void Initialize(Camera camera = null)
         {
-            _forcedCamera = camera;
-
             _captureRT = new RenderTexture(_width, _height, 24, RenderTextureFormat.ARGB32);
             _captureRT.antiAliasing = 1;
             _captureRT.filterMode = FilterMode.Bilinear;
@@ -103,43 +100,8 @@ namespace Extra.ScreenRecording
 
                 _lastCaptureTime = currentTime;
 
-                // Resolve the camera to render for this frame
-                Camera currentCamera = _forcedCamera;
-                if (currentCamera == null)
-                {
-                    currentCamera = Camera.main;
-                    if (currentCamera == null || !currentCamera.isActiveAndEnabled)
-                    {
-                        // Fallback: find any active camera in the scene
-                        currentCamera = FindActiveCameraInScene();
-                    }
-                }
-
-                if (currentCamera == null || !currentCamera.isActiveAndEnabled)
-                {
-                    if (_settings.EnableDebugLogs)
-                    {
-                        Debug.LogWarning("[FrameCapture] No active Camera found for capture.");
-                    }
-                    continue;
-                }
-
-                // Render camera into target RenderTexture
-                var originalTarget = currentCamera.targetTexture;
-                currentCamera.targetTexture = _captureRT;
-                
-                try
-                {
-                    currentCamera.Render();
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError($"[FrameCapture] Camera rendering failed: {ex.Message}");
-                    currentCamera.targetTexture = originalTarget;
-                    continue;
-                }
-
-                currentCamera.targetTexture = originalTarget;
+                // Capture the screen directly into the RenderTexture
+                ScreenCapture.CaptureScreenshotIntoRenderTexture(_captureRT);
 
                 int currentFrameIndex = _frameIndex++;
                 float timestamp = currentTime;
@@ -185,19 +147,6 @@ namespace Extra.ScreenRecording
                     OnFrameCaptured?.Invoke(data, timestamp, currentFrameIndex);
                 }
             }
-        }
-
-        private Camera FindActiveCameraInScene()
-        {
-            var cameras = UnityEngine.Object.FindObjectsOfType<Camera>();
-            foreach (var cam in cameras)
-            {
-                if (cam.isActiveAndEnabled && cam.targetTexture == null)
-                {
-                    return cam;
-                }
-            }
-            return null;
         }
 
         public void Dispose()
