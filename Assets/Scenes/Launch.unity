@@ -39292,33 +39292,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6723469902405480797, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.SegmentDurationSeconds
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8132364444978233235, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
       propertyPath: m_Name
       value: ExtraManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.JpgQuality
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.CaptureWidth
-      value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.CaptureHeight
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.EnableDebugLogs
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770730647460358937, guid: 3058c07a4b41d4b6f8462a6464477e45, type: 3}
-      propertyPath: settings.MaxConcurrentEncoders
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
